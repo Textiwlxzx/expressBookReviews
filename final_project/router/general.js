@@ -65,49 +65,4 @@ public_users.get('/review/:isbn', function (req, res) {
   res.send(books[isbn].reviews);
 });
 
-// ---- Task 10-13: Same operations implemented with Axios (Promise / async-await) ----
-
-// Task 10: Get all books – async/await
-async function getAllBooks() {
-  try {
-    const response = await axios.get("http://localhost:5000/");
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-// Task 11: Search by ISBN – Promises
-function getBookByISBN(isbn) {
-  return axios.get(`http://localhost:5000/isbn/${isbn}`)
-    .then((response) => {
-      console.log(response.data);
-      return response.data;
-    })
-    .catch((error) => console.error(error.message));
-}
-
-// Task 12: Search by author – async/await
-async function getBooksByAuthor(author) {
-  try {
-    const response = await axios.get(`http://localhost:5000/author/${encodeURIComponent(author)}`);
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-// Task 13: Search by title – async/await
-async function getBooksByTitle(title) {
-  try {
-    const response = await axios.get(`http://localhost:5000/title/${encodeURIComponent(title)}`);
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
 module.exports.general = public_users;
